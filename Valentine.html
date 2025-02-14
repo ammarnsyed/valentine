@@ -41,7 +41,7 @@
             margin-top: 20px;
         }
 
-        #yesButton {
+        #yesButton, #letterButton{
             background-color: #ff4d88;
             color: white;
             border: none;
@@ -85,6 +85,11 @@
             width: 300px; /* Adjust size */
             margin: 20px auto; /* Center */
         }
+
+        #letterButton {
+            display: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -117,7 +122,9 @@
                 </div>
                 <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
             </div>
-            Yaaaay! 😍 You made my heart <span class="heart">❤️</span> skip a beat!
+            Yaaaay! 😍 You made my heart <span class="heart">❤️</span> skip a beat! I am so grateful you are in my life!
+            <br>
+            <button id="letterButton" onclick="location.href='letter.html'">My Love Letter</button>
         </div>
     </div>
 
@@ -141,20 +148,23 @@
             "Last chance!",
             "Please? 🥺",
             "I'm begging! 😭",
-            "You are breaking my heart  🥺💔"
+            "You are breaking my heart 🥺💔"
         ];
 
         noButton.addEventListener('click', () => {
             if (attempts < messages.length - 1) { 
-                scale += 0.2;
+                scale += 3;
                 noMove += 30;
                 yesButton.style.transform = `scale(${scale})`;
                 noButton.style.transform = `translateX(${noMove}px)`;
                 question.style.transform = `translateY(-${scale * 10}px)`;
                 noButton.textContent = messages[attempts]; 
                 attempts++;
+            } else if (attempts === messages.length - 1) {
+                noButton.textContent = messages[messages.length - 1]; // Show last message
+                attempts++;
             } else {
-                noButton.textContent = messages[messages.length - 1]; // Stay on last message
+                noButton.style.display = "none"; // Hide after 9th click
             }
         });
 
@@ -165,6 +175,7 @@
             yesButton.style.display = 'none';
             noButton.style.display = 'none';
             question.style.display = 'none';
+            letterButton.style.display = 'inline-block';
         });
     </script>
 </body>

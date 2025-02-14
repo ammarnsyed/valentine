@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter 💌</title>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: float 4s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter">
+        <h2>Hi Babypie! 💖</h2>
+        <p>
+            It's Sheru, I just wanted to say a few words from my side. You have been an amazing girlfriend, 
+            best friend, and partner anyone could ever ask for. I can't believe you are with me and so supportive in everything. 
+            I love you so much I cannot even express it into words. I wish you were here to celebrate this day together, I miss you so much!
+        </p>
+        <p>
+            I am so glad you got a job and are killing it in India! You deserve the best and more. 
+            You are extremely capable and amazing, and don't let anyone tell you otherwise. You are my boss babe.
+        </p>
+        <p>
+            Can't wait till you're back here and are leading companies, my lil smarty pants. That way you can get me a job hahahaha.
+            Anyways, I just wanted to write this letter to show my love and appreciation for you. You are the best, Pookie! 💕
+        </p>
+        <p><b>PS:</b> I will be getting you flowers and chocolates as well when you move to your new office, so don’t think this is the only gift! 😉</p>
+        <p><b>Yours Truly,<br>Sheru</b></p>
+    </div>
+
+    <script>
+        setInterval(() => {
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }, 300);
+    </script>
+
+</body>
+</html>
