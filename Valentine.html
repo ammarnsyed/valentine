@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Question ❤️</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #ffe6f2;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .gif-container {
+            width: 250px; /* Reduced size */
+            margin: 0 auto 10px; /* Centered & added space */
+        }
+
+        h1 {
+            color: #ff6699;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-family: 'Comic Sans MS', cursive;
+            transition: transform 0.3s;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        #yesButton {
+            background-color: #ff4d88;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.3s, margin-top 0.3s;
+        }
+
+        #noButton {
+            background-color: white;
+            color: #ff4d88;
+            border: 2px solid #ff4d88;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s, transform 0.3s;
+        }
+
+        #noButton:hover {
+            background-color: #fff0f5;
+        }
+
+        .response {
+            margin-top: 30px;
+            font-size: 2em;
+            color: #ff3366;
+            display: none;
+        }
+
+        .heart {
+            color: red;
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+
+        .second-gif {
+            display: none;
+            width: 300px; /* Adjust size */
+            margin: 20px auto; /* Center */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First GIF (Bear Love GIF) -->
+        <div class="gif-container" id="firstGif">
+            <div class="tenor-gif-embed" data-postid="17246531" data-share-method="host" data-aspect-ratio="1.16788" data-width="100%">
+                <a href="https://tenor.com/view/bear-love-heart-jumping-jump-gif-17246531">Bear Love GIF</a> from 
+                <a href="https://tenor.com/search/bear-gifs">Bear GIFs</a>
+            </div>
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </div>
+
+        <!-- Valentine's Question -->
+        <h1 id="question">Will you be my Valentine? 💖</h1>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <button id="yesButton">YES</button>
+            <button id="noButton">NO</button>
+        </div>
+
+        <!-- Response Message -->
+        <div class="response" id="response">
+            <!-- Second GIF (Appears after clicking "YES") -->
+            <div class="second-gif" id="secondGif">
+                <div class="tenor-gif-embed" data-postid="25374095" data-share-method="host" data-aspect-ratio="1.23552" data-width="100%">
+                    <a href="https://tenor.com/view/andrearollon-gif-25374095">Andrearollon GIF</a> from 
+                    <a href="https://tenor.com/search/andrearollon-gifs">Andrearollon GIFs</a>
+                </div>
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+            </div>
+            Yaaaay! 😍 You made my heart <span class="heart">❤️</span> skip a beat!
+        </div>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const question = document.getElementById('question');
+        const response = document.getElementById('response');
+        const firstGif = document.getElementById('firstGif');
+        const secondGif = document.getElementById('secondGif');
+
+        let scale = 1;
+        let noMove = 0;
+        let attempts = 0;
+
+        const messages = [
+            "Are you sure?", 
+            "Really sure?", 
+            "Think again!", 
+            "You might regret this...",
+            "Last chance!",
+            "Please? 🥺",
+            "I'm begging! 😭",
+            "Fine... 💔"
+        ];
+
+        noButton.addEventListener('click', () => {
+            if (attempts < messages.length - 1) { 
+                scale += 0.2;
+                noMove += 30;
+                yesButton.style.transform = `scale(${scale})`;
+                noButton.style.transform = `translateX(${noMove}px)`;
+                question.style.transform = `translateY(-${scale * 10}px)`;
+                noButton.textContent = messages[attempts]; 
+                attempts++;
+            } else {
+                noButton.textContent = messages[messages.length - 1]; // Stay on last message
+            }
+        });
+
+        yesButton.addEventListener('click', () => {
+            response.style.display = 'block';
+            secondGif.style.display = 'block'; // Show second GIF
+            firstGif.style.display = 'none'; // Hide first GIF
+            yesButton.style.display = 'none';
+            noButton.style.display = 'none';
+            question.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
